@@ -23,6 +23,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.aps.timerapp.R
 import com.aps.timerapp.components.ScreenTitle
 import com.aps.timerapp.components.bottombar.BottomBar
@@ -33,7 +34,7 @@ import com.aps.timerapp.domain.UiEvent
 @OptIn(ExperimentalAnimationApi::class)
 @Composable
 fun TimerScreen(
-    timerViewModel: TimerViewModel
+    timerViewModel: TimerViewModel = viewModel()
 ) {
 
     val timeState by remember {
@@ -46,7 +47,7 @@ fun TimerScreen(
     Column (
         modifier = Modifier
             .fillMaxSize()
-            .background(colorResource(id = R.color.teal_200)),
+            .background(colorResource(id = R.color.white)),
     ) {
         ScreenTitle(title = "Timer")
         Spacer(modifier = Modifier.height(34.dp))
@@ -63,24 +64,24 @@ fun TimerScreen(
             }
         ) { target ->
             if (target == TimerContent.SELECTION) {
-//                TimerSelectionScreen(
-//                    modifier = Modifier.fillMaxWidth(),
-//                    timeState = timeState,
-//                    onKeyClick = { key ->
-//                        timerViewModel.onEvent(
-//                            UiEvent.OnKeyPressed(key)
-//                        )
-//                    }
-//                )
+                TimerSelectionScreen(
+                    modifier = Modifier.fillMaxWidth(),
+                    timeState = timeState,
+                    onKeyClick = { key ->
+                        timerViewModel.onEvent(
+                            UiEvent.OnKeyPressed(key)
+                        )
+                    }
+                )
             } else {
-//                TimerRunnerScreen(
-//                    modifier = Modifier.fillMaxWidth(),
-//                    onTimerStop = { key ->
-//                        timerViewModel.onEvent(
-//                            UiEvent.OnKeyPressed(key)
-//                        )
-//                    }
-//                )
+                TimerRunnerScreen(
+                    modifier = Modifier.fillMaxWidth(),
+                    onTimerStop = { key ->
+                        timerViewModel.onEvent(
+                            UiEvent.OnKeyPressed(key)
+                        )
+                    }
+                )
             }
         }
 

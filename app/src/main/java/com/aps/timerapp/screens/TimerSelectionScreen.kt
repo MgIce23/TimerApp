@@ -1,6 +1,5 @@
 package com.aps.timerapp.screens
 
-import android.graphics.Color
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.scaleIn
 import androidx.compose.animation.scaleOut
@@ -16,6 +15,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.aps.timerapp.components.CircularKey
 import com.aps.timerapp.components.TimeDisplay
+import com.aps.timerapp.components.TimerKeypadScreen
 import com.aps.timerapp.domain.KeyPad
 import com.aps.timerapp.domain.model.TimeData
 
@@ -35,12 +35,11 @@ fun TimerSelectionScreen(
             time = timeState,
         )
         Spacer(modifier = Modifier.height(24.dp))
-
-//        TimerKeypadScreen(
-//            onKeyClick = { key ->
-//                onKeyClick(key)
-//            }
-//        )
+        TimerKeypadScreen(
+            onKeyClick = { key ->
+                onKeyClick(key)
+            }
+        )
         Spacer(modifier = Modifier.height(16.dp))
         AnimatedVisibility(
             visible = isPlayButtonVisible,

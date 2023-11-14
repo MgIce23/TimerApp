@@ -13,6 +13,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.aps.timerapp.domain.KeyPad
 
@@ -20,7 +21,6 @@ import com.aps.timerapp.domain.KeyPad
 fun TimerKeypadScreen(
     onKeyClick: (KeyPad) -> Unit
 ) {
-
     Column(
         modifier = Modifier.fillMaxWidth(),
         verticalArrangement = Arrangement.spacedBy(4.dp),
@@ -29,7 +29,7 @@ fun TimerKeypadScreen(
         Row(
             horizontalArrangement = Arrangement.spacedBy(24.dp)
         ) {
-            val modifier =  Modifier
+            val modifier = Modifier
                 .width(96.dp)
                 .height(96.dp)
             CircularKey(
@@ -54,7 +54,7 @@ fun TimerKeypadScreen(
         Row(
             horizontalArrangement = Arrangement.spacedBy(24.dp)
         ) {
-            val modifier =  Modifier
+            val modifier = Modifier
                 .width(96.dp)
                 .height(96.dp)
             CircularKey(
@@ -79,7 +79,7 @@ fun TimerKeypadScreen(
         Row(
             horizontalArrangement = Arrangement.spacedBy(24.dp)
         ) {
-            val modifier =  Modifier
+            val modifier = Modifier
                 .width(96.dp)
                 .height(96.dp)
             CircularKey(
@@ -104,7 +104,7 @@ fun TimerKeypadScreen(
         Row(
             horizontalArrangement = Arrangement.spacedBy(24.dp)
         ) {
-            val modifier =  Modifier
+            val modifier = Modifier
                 .width(96.dp)
                 .height(96.dp)
             CircularKey(
@@ -129,4 +129,10 @@ fun TimerKeypadScreen(
             )
         }
     }
+}
+
+@Preview
+@Composable
+fun TimerKeyPad(){
+    TimerKeypadScreen(onKeyClick = {})
 }

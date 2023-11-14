@@ -33,7 +33,6 @@ class TimerViewModel : ViewModel(){
                 }
                 deleteTime()
             }
-
             KeyPad.Key0 -> {
                 if (timeState.value.isDataEmpty()
                     || timeState.value.isDataFul()
@@ -49,7 +48,6 @@ class TimerViewModel : ViewModel(){
                 addTime(KeyPad.Key0.value)
                 addTime(KeyPad.Key0.value)
             }
-
             KeyPad.KeyStop ->timerContent.value = TimerContent.SELECTION
             else ->{
                 if (timeState.value.isDataFul())
@@ -62,26 +60,24 @@ class TimerViewModel : ViewModel(){
     private fun deleteTime() {
         val secs = TimeUnit(
             rightDigit = timeState.value.sec.leftDigit,
-            leftDigit = timeState.value.mins.rightDigit)
-
+            leftDigit = timeState.value.mins.rightDigit,
+        )
         val mins = TimeUnit(
             rightDigit = timeState.value.mins.leftDigit,
-            leftDigit = timeState.value.hour.rightDigit
+            leftDigit = timeState.value.hour.rightDigit,
         )
-
-        val hour = TimeUnit(
+        val hours = TimeUnit(
             rightDigit = timeState.value.hour.leftDigit,
-            leftDigit = 0
+            leftDigit = 0,
         )
-
         timeState.value = timeState.value.copy(
-            hour = hour,
+            hour = hours,
             mins = mins,
             sec = secs
         )
     }
 
-    private fun addTime(value:String){
+    private fun addTime(value: String) {
         val intValue = value.toInt()
         val hours = TimeUnit(
             leftDigit = timeState.value.hour.rightDigit,
@@ -89,7 +85,7 @@ class TimerViewModel : ViewModel(){
         )
         val mins = TimeUnit(
             leftDigit = timeState.value.mins.rightDigit,
-            rightDigit = timeState.value.mins.leftDigit,
+            rightDigit = timeState.value.sec.leftDigit,
         )
         val secs = TimeUnit(
             leftDigit = timeState.value.sec.rightDigit,
